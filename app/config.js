@@ -1,32 +1,32 @@
 var path = require('path');
 var mongoose = require('mongoose');
-var mongodb = require('mongodb');
-var db = mongoose.createConnection('localhost', 'shortlydb');
-// db.connect('mongodb://localhost/shortlydb');
-db.on('error', function() {
-  console.log('ERROR: Cannot connect to db');
-});
-db.once('open', function(arg) {
-  console.log('Hooray! You are connected to db');
-});
-
-// var Schema = mongoose.Schema;
-
-// // create a schema
-// // db.userSchema = new Schema({
-// //   // id: objectId(),
-// //   username: { type: String, required: true, unique: true },
-// //   password: { type: String, required: true }
-// // });
-
-// db.linkSchema = new Schema({
-//   // id: objectId(),
-//   url: { type: String, required: true, unique: true },
-//   baseUrl: { type: String },
-//   code: { type: String },
-//   title: { type: String },
-//   visits: { type: Number }
+// var mongodb = require('mongodb');
+mongoose.connect('mongodb://localhost/shortlydb');
+// var db = mongoose.createConnection('localhost', 'shortlydb');
+// db.on('error', function() {
+//   console.log('ERROR: Cannot connect to db');
 // });
+// db.once('open', function(arg) {
+//   console.log('Hooray! You are connected to db');
+// });
+
+var Schema = mongoose.Schema;
+
+// create a schema
+var Users = new Schema({
+  // id: objectId(),
+  username: { type: String },
+  password: { type: String }
+});
+
+var Links = new Schema({
+  // id: objectId(),
+  url: { type: String },
+  baseUrl: { type: String },
+  code: { type: String },
+  title: { type: String },
+  visits: { type: Number }
+});
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -66,4 +66,6 @@ db.once('open', function(arg) {
 //   }
 // });
 
-module.exports = db;
+module.exports.users = Users;
+
+module.exports.links = Links;

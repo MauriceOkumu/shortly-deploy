@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
 
-var Link = mongoose.Schema;
+var Link = mongoose.model('Link', db.links);
 
 // db.linkSchema = new Schema({
 //   // id: objectId(),

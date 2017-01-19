@@ -4,15 +4,16 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
+var User = mongoose.model('User', db.users);
 
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-// create a schema
-var User = new Schema({
-  // id: objectId(),
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-});
+// // create a schema
+// var User = new Schema({
+//   // id: objectId(),
+//   username: { type: String, required: true, unique: true },
+//   password: { type: String, required: true }
+// });
 
 // var User = db.find.extend({
 //   tableName: 'users',
