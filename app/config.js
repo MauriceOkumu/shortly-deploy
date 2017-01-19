@@ -1,32 +1,50 @@
-var path = require('path');
+
 var mongoose = require('mongoose');
 // var mongodb = require('mongodb');
 mongoose.connect('mongodb://localhost/shortlydb');
-// var db = mongoose.createConnection('localhost', 'shortlydb');
-// db.on('error', function() {
-//   console.log('ERROR: Cannot connect to db');
-// });
+var db = mongoose.connection;
 // db.once('open', function(arg) {
 //   console.log('Hooray! You are connected to db');
 // });
 
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-// create a schema
-var Users = new Schema({
-  // id: objectId(),
-  username: { type: String },
-  password: { type: String }
-});
+// // create a schema
+// var Users = new Schema({
+//   // id: objectId(),
+//   username: { type: String },
+//   password: { type: String },
+// });
 
-var Links = new Schema({
-  // id: objectId(),
-  url: { type: String },
-  baseUrl: { type: String },
-  code: { type: String },
-  title: { type: String },
-  visits: { type: Number }
-});
+// Users.comparePassword = function(attemptedPassword, callback) {
+//   bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
+//     callback(isMatch);
+//   });
+// };
+
+// Users.hashPassword = function() {
+//   var cipher = Promise.promisify(bcrypt.hash);
+//   return cipher(this.get('password'), null, null).bind(this)
+//     .then(function(hash) {
+//       this.set('password', hash);
+//     });
+// };
+
+// // = db.find.extend({
+// //   tableName: 'users',
+// //   hasTimestamps: true,
+// //   initialize: function() {
+// //     this.on('creating', this.hashPassword);
+// //   },
+
+// var Links = new Schema({
+//   // id: objectId(),
+//   url: { type: String },
+//   baseUrl: { type: String },
+//   code: { type: String },
+//   title: { type: String },
+//   visits: { type: Number }
+// });
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -66,6 +84,8 @@ var Links = new Schema({
 //   }
 // });
 
-module.exports.users = Users;
+// module.exports.users = Users;
 
-module.exports.links = Links;
+// module.exports.links = Links;
+
+module.exports = db;
